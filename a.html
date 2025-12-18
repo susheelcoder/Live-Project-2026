@@ -3,97 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Pooja</title>
+    <title>For Pooja ❤️</title>
+
     <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
         body {
-            margin: 0; padding: 0;
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background: radial-gradient(circle, #ffdde1, #ee9ca7);
+            font-family:'Segoe UI';
+            overflow:hidden;
         }
 
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            text-align: center;
-            max-width: 450px;
-            z-index: 2;
-            border: 2px solid #f06292;
+        /* Glass Card */
+        .card {
+            width:90%;
+            max-width:480px;
+            background:rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            padding:35px;
+            border-radius:25px;
+            text-align:center;
+            border:1px solid rgba(255,255,255,0.5);
+            box-shadow:0px 0px 30px rgba(255, 69, 121, 0.25);
+            animation: fadePopup 1.5s ease;
         }
 
-        h1 { color: #d81b60; margin-bottom: 20px; font-size: 30px; }
-        p { color: #444; line-height: 1.8; font-size: 19px; font-style: italic; }
+        @keyframes fadePopup {
+            0%{opacity:0; transform:scale(.6);}
+            100%{opacity:1; transform:scale(1);}
+        }
+
+        h1{
+            font-size:34px;
+            color:#d81b60;
+            margin-bottom:15px;
+            font-weight:900;
+            text-shadow:0px 0px 6px rgba(216,27,96,0.4);
+            animation: glow 3s infinite linear;
+        }
+
+        @keyframes glow{
+            0%{text-shadow:0 0 6px rgba(216,27,96,0.4);}
+            50%{text-shadow:0 0 18px rgba(216,27,96,1);}
+            100%{text-shadow:0 0 6px rgba(216,27,96,0.4);}
+        }
+
+        p{
+            font-size:19px;
+            color:#333;
+            line-height:1.8;
+            font-weight:500;
+            animation:textShow 2s ease;
+        }
+
+        /* typewriter */
+        .type {
+            display:inline-block;
+            border-right:3px solid #d81b60;
+            white-space:nowrap;
+            width:0;
+            overflow:hidden;
+            animation: typing 5s steps(60,end) forwards, blink .6s infinite;
+        }
+
+        @keyframes typing {
+            to{width:100%;}
+        }
+
+        @keyframes blink {
+            50%{border-color:transparent;}
+        }
 
         /* Music Button */
-        .music-btn {
-            background: #e91e63;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 20px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+        .btn{
+            margin-top:28px;
+            padding:14px 28px;
+            border-radius:50px;
+            background:#d81b60;
+            color:white;
+            border:none;
+            font-size:18px;
+            cursor:pointer;
+            font-weight:bold;
+            transition:.3s;
+            box-shadow:0 6px 18px rgba(216,27,96,0.6);
         }
 
-        .heart {
-            position: absolute;
-            color: #f06292;
-            animation: float 5s infinite ease-in;
-            opacity: 0;
-            z-index: 1;
+        .btn:hover{
+            transform:scale(1.08);
+        }
+
+        .emoji{
+            margin-top:20px;
+            font-size:35px;
+            animation:heartjump 1s infinite;
+        }
+
+        @keyframes heartjump{
+            0%,100%{transform:translateY(0);}
+            50%{transform:translateY(-6px);}
+        }
+
+        /* floating hearts */
+        .heart{
+            position:absolute;
+            color:#ff2d55;
+            animation: float linear forwards;
+            opacity:0.9;
+            z-index:-1;
         }
 
         @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+            from{
+                transform:translateY(100vh) rotate(0deg);
+                opacity:1;
+            }
+            to{
+                transform:translateY(-10vh) rotate(360deg);
+                opacity:0;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<div id="heartContainer"></div>
+<div id="heartBox"></div>
 
-<div class="container">
-    <h1>I'm Sorry Pooja 🌹</h1>
-    <p>
-        "Pooja, main samajh sakta hoon ki tum naraz ho aur shayad abhi baat nahi karna chahti. 
-        Main tumhe baar-baar call karke pareshan nahi karunga. 
-        Jab tumhara gussa thanda ho jaye aur tum comfortable mehsoos karo, 
-        tab please mujhe message karna. I'm really sorry."
+<div class="card">
+    <h1>Pooja ❤️</h1>
+
+    <p class="type">
+        "Main jaanta hoon tum naraz ho… par sach bolu toh tumhaari 
+        kami bahut mehsoos hoti hai. Main tumhe hurt nahi karna chahta.
+        Jab bhi tum ready ho… please ek message zaroor karna. I'm Sorry ❤️"
     </p>
-    
-    <audio id="sorryAudio" loop>
+
+    <audio id="song" loop>
         <source src="music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
     </audio>
 
-    <button class="music-btn" onclick="togglePlay()">🎵 Play Sorry Song</button>
-    <div style="margin-top: 15px; font-size: 30px;">🥺🙏</div>
+    <button class="btn" onclick="playSong()">🎵 Start Music</button>
+
+    <div class="emoji">🥺🙏</div>
 </div>
 
 <script>
-    const audio = document.getElementById('sorryAudio');
-    function togglePlay() {
-        return audio.paused ? audio.play() : audio.pause();
+    const audio = document.getElementById("song");
+    const btn = document.querySelector(".btn");
+
+    function playSong(){
+        if(audio.paused){
+            audio.play();
+            btn.innerText="⏸️ Pause Song";
+        } else {
+            audio.pause();
+            btn.innerText="🎵 Start Music";
+        }
     }
 
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.innerHTML = '❤️';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        document.getElementById('heartContainer').appendChild(heart);
-        setTimeout(() => { heart.remove(); }, 5000);
+    function makeHeart(){
+        const h = document.createElement("div");
+        h.innerHTML="❤️";
+        h.className="heart";
+        h.style.left=Math.random()*100+"vw";
+        h.style.fontSize=Math.random()*25+15+"px";
+        h.style.animationDuration=Math.random()*3+3+"s";
+        document.getElementById("heartBox").appendChild(h);
+        setTimeout(()=>h.remove(),6000);
     }
-    setInterval(createHeart, 300);
+    setInterval(makeHeart,200);
 </script>
 
 </body>
