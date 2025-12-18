@@ -1,119 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pooja's Special Page</title>
+    <title>For Pooja</title>
     <style>
-        /* CSS: Styling aur Animations */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        
-        body { background: #fff0f3; color: #333; overflow-x: hidden; }
-
-        nav { 
-            background: #fff; padding: 20px; display: flex; 
-            justify-content: space-around; position: sticky; top: 0;
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.1); z-index: 1000;
+        body {
+            margin: 0; padding: 0;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
         }
 
-        nav a { 
-            text-decoration: none; color: #ff4d6d; font-weight: bold; 
-            cursor: pointer; padding: 10px 20px; border-radius: 20px; transition: 0.3s;
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            text-align: center;
+            max-width: 450px;
+            z-index: 2;
+            border: 2px solid #f06292;
         }
 
-        nav a:hover, nav a.active-link { background: #ff4d6d; color: #fff; }
+        h1 { color: #d81b60; margin-bottom: 20px; font-size: 30px; }
+        p { color: #444; line-height: 1.8; font-size: 19px; font-style: italic; }
 
-        .content-area { padding: 40px 20px; max-width: 800px; margin: auto; }
-
-        .section { display: none; min-height: 70vh; text-align: center; animation: slideIn 0.5s ease; }
-
-        .show { display: block; }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
+        /* Music Button */
+        .music-btn {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
         }
 
-        h1 { color: #c9184a; margin-bottom: 20px; font-size: 2.5rem; }
-        
-        .card { 
-            background: white; padding: 30px; border-radius: 15px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-top: 20px;
+        .heart {
+            position: absolute;
+            color: #f06292;
+            animation: float 5s infinite ease-in;
+            opacity: 0;
+            z-index: 1;
         }
 
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
-        .box { background: #ffccd5; height: 150px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
-
-        footer { text-align: center; padding: 20px; color: #ff758f; font-size: 0.9rem; }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a onclick="openTab('home')" id="defaultOpen">Home</a>
-        <a onclick="openTab('about')">About Her</a>
-        <a onclick="openTab('memories')">Memories</a>
-        <a onclick="openTab('message')">Message</a>
-    </nav>
+<div id="heartContainer"></div>
 
-    <div class="content-area">
-        <div id="home" class="section">
-            <h1>Welcome, Pooja! ✨</h1>
-            <div class="card">
-                <p>A beautiful soul deserves a beautiful space.</p>
-                <p style="margin-top: 15px; font-style: italic;">"Keep shining like the star you are."</p>
-            </div>
-        </div>
+<div class="container">
+    <h1>I'm Sorry Pooja 🌹</h1>
+    <p>
+        "Pooja, main samajh sakta hoon ki tum naraz ho aur shayad abhi baat nahi karna chahti. 
+        Main tumhe baar-baar call karke pareshan nahi karunga. 
+        Jab tumhara gussa thanda ho jaye aur tum comfortable mehsoos karo, 
+        tab please mujhe message karna. I'm really sorry."
+    </p>
+    
+    <audio id="sorryAudio" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-        <div id="about" class="section">
-            <h1>About Her 🌸</h1>
-            <div class="card">
-                <p>Kind, smart, and a true friend.</p>
-                <p>Personality: 100% Pure Heart</p>
-            </div>
-        </div>
+    <button class="music-btn" onclick="togglePlay()">🎵 Play Sorry Song</button>
+    <div style="margin-top: 15px; font-size: 30px;">🥺🙏</div>
+</div>
 
-        <div id="memories" class="section">
-            <h1>Sweet Memories 📸</h1>
-            <div class="gallery-grid">
-                <div class="box">🌸</div>
-                <div class="box">💖</div>
-                <div class="box">💫</div>
-                <div class="box">🎈</div>
-            </div>
-        </div>
+<script>
+    const audio = document.getElementById('sorryAudio');
+    function togglePlay() {
+        return audio.paused ? audio.play() : audio.pause();
+    }
 
-        <div id="message" class="section">
-            <h1>Special Note 💌</h1>
-            <div class="card">
-                <p>A small gift to celebrate our friendship!</p>
-                <button onclick="alert('You are awesome!')" style="margin-top:20px; padding:10px 20px; border:none; background:#ff4d6d; color:white; border-radius:5px; cursor:pointer;">Click for Surprise</button>
-            </div>
-        </div>
-    </div>
-
-    <footer>Created with ❤️ for Pooja</footer>
-
-    <script>
-        function openTab(tabName) {
-            // Sabhi sections ko hide karo
-            var sections = document.getElementsByClassName("section");
-            for (var i = 0; i < sections.length; i++) {
-                sections[i].classList.remove("show");
-            }
-            
-            // Link color change karne ke liye logic
-            var links = document.querySelectorAll("nav a");
-            links.forEach(link => link.classList.remove("active-link"));
-
-            // Selected section dikhao
-            document.getElementById(tabName).classList.add("show");
-            event.currentTarget.classList.add("active-link");
-        }
-
-        // Default page load
-        document.getElementById("defaultOpen").click();
-    </script>
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.getElementById('heartContainer').appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 5000);
+    }
+    setInterval(createHeart, 300);
+</script>
 
 </body>
 </html>
