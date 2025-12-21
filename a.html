@@ -1,196 +1,73 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorry Pooja</title>
-    <style>
-        body {
-            margin: 0; padding: 20px;
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh;
-            background: #fff0f5;
-            font-family: sans-serif;
-            overflow: hidden;
-        }
-
-        .so{
-display:none;
+<meta charset="UTF-8">
+<title>Christmas Tree Animation</title>
+<style>
+body{
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+    color:white;
+    font-family:Arial;
 }
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            width: 100%;
-            max-width: 350px;
-            border: 2px solid #ff69b4;
-            position: relative;
-            z-index: 10;
-        }
-        h1 { color: #d81b60; font-size: 24px; }
-        p { color: #333; line-height: 1.6; font-size: 17px; margin: 20px 0; }
-        .play-btn {
-            background: #ff69b4;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
-        }
-        .heart {
-            position: absolute;
-            color: #ff69b4;
-            animation: float 4s linear infinite;
-            opacity: 0;
-            z-index: 1;
-        }
-        @keyframes float {
-            0% { transform: translateY(100vh); opacity: 1; }
-            100% { transform: translateY(-10vh); opacity: 0; }
-        }
-    </style>
+
+.tree{
+    position:relative;
+    width:0;
+    height:0;
+    border-left:100px solid transparent;
+    border-right:100px solid transparent;
+    border-bottom:200px solid green;
+    animation: glow 2s infinite;
+}
+
+.tree:before,
+.tree:after{
+    content:"";
+    position:absolute;
+    left:-80px;
+    top:60px;
+    border-left:80px solid transparent;
+    border-right:80px solid transparent;
+    border-bottom:160px solid green;
+}
+
+.tree:after{
+    left:-60px;
+    top:120px;
+    border-left:60px solid transparent;
+    border-right:60px solid transparent;
+    border-bottom:120px solid green;
+}
+
+.star{
+    position:absolute;
+    top:-40px;
+    left:-10px;
+    font-size:40px;
+    animation: spin 3s linear infinite;
+}
+
+@keyframes glow{
+ 0%,100%{filter:drop-shadow(0 0 8px lime);}
+ 50%{filter:drop-shadow(0 0 25px yellow);}
+}
+
+@keyframes spin{
+ 0%{transform:rotate(0deg);}
+ 100%{transform:rotate(360deg);}
+}
+</style>
 </head>
 <body>
 
-<div id="hearts">1</div>
-
-<div class="card">
-    <h1>Sorry Pooja 🌹</h1>
-    <p id="sorryText" class="so">
-        Pooja, Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-Sorry
-    </p>
-    
-    <button class="play-btn" onclick="speakText()">🔊 Listen </button>
-   
+<div class="tree">
+  <div class="star">⭐</div>
 </div>
-
-
-
-
-<script>
-    function speakText() {
-        const text = document.getElementById('sorryText').innerText;
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'hi-IN'; // Hindi voice
-        utterance.rate = 0.9;    // Speed thodi slow rakhi hai emotional lage
-        window.speechSynthesis.speak(utterance);
-    }
-
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.innerHTML = '❤️';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-        document.getElementById('hearts').appendChild(heart);
-        setTimeout(() => { heart.remove(); }, 4000);
-    }
-    setInterval(createHeart, 400);
-</script>
 
 </body>
 </html>
