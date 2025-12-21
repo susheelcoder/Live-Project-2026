@@ -1,68 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Christmas Snow Tree</title>
 <style>
 body{
-    margin:0;
-    background:#001;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+ background:#000;
+ height:100vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
 }
 
-.tree{
-    width:0;
-    height:0;
-    border-left:120px solid transparent;
-    border-right:120px solid transparent;
-    border-bottom:250px solid green;
-    position:relative;
+.loader{
+ width:60px;
+ height:60px;
+ position:relative;
+ animation: grow 1.5s infinite;
 }
 
-.star{
-    color:yellow;
-    font-size:50px;
-    position:absolute;
-    top:-55px;
-    left:-16px;
+.loader div{
+ position:absolute;
+ border-radius:50%;
+ border:5px solid lime;
+ opacity:0;
 }
 
-.snow{
-    position:fixed;
-    top:-10px;
-    width:10px;
-    height:10px;
-    background:white;
-    border-radius:50%;
-    animation: fall linear infinite;
+.loader div:nth-child(1){
+ width:20px;height:20px;animation: pop 1s infinite;
+}
+.loader div:nth-child(2){
+ width:35px;height:35px;animation: pop 1s infinite .2s;
+}
+.loader div:nth-child(3){
+ width:50px;height:50px;animation: pop 1s infinite .4s;
 }
 
-@keyframes fall{
-    to { transform: translateY(100vh); }
+@keyframes pop{
+ 0%{transform:scale(0.2);opacity:1;}
+ 100%{transform:scale(1.2);opacity:0;}
 }
 </style>
 </head>
 <body>
 
-<div class="tree">
-    <div class="star">⭐</div>
+<div class="loader">
+ <div></div>
+ <div></div>
+ <div></div>
 </div>
-
-<script>
-function snow(){
-    let sn = document.createElement("div");
-    sn.className="snow";
-    sn.style.left = Math.random()*innerWidth+"px";
-    sn.style.animationDuration = (Math.random()*3+2)+"s";
-    document.body.appendChild(sn);
-    setTimeout(()=>sn.remove(),5000);
-}
-
-setInterval(snow, 100);
-</script>
 
 </body>
 </html>
