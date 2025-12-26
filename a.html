@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Poppins',sans-serif;
@@ -30,7 +30,7 @@ body{
   100%{transform:translateY(-10vh)}
 }
 
-/* main card */
+/* card */
 .card{
   background:#fff;
   max-width:420px;
@@ -38,15 +38,15 @@ body{
   padding:20px;
   border-radius:25px;
   text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,.2);
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
+/* texts */
 .title{
   font-family:'Dancing Script',cursive;
   font-size:2.8rem;
   color:#ff3366;
 }
-
 .subtitle{
   color:#ff6699;
   margin:10px 0 20px;
@@ -114,10 +114,21 @@ body{
   background:#ddd;
 }
 
+/* camera */
+#cameraBox{
+  display:none;
+  margin-top:20px;
+}
+#camera{
+  width:100%;
+  border-radius:20px;
+  border:4px solid #ff3366;
+}
+
 /* final */
 .final{
   display:none;
-  margin-top:25px;
+  margin-top:20px;
   font-family:'Dancing Script',cursive;
   font-size:2.6rem;
   color:#ff0066;
@@ -133,12 +144,9 @@ body{
 
   <div class="shayari" id="s1">तुम्हारी यादें मेरी दुनिया हैं…</div>
   <div class="shayari" id="s2">तुम्हारी हँसी मेरी ताक़त है…</div>
-  <div class="shayari" id="s3">और तुम… मेरी सबसे प्यारी आदत ❤️</div>
+  <div class="shayari" id="s3">और तुम मेरी सबसे प्यारी आदत ❤️</div>
 
-  <div class="secret-box" onclick="showSecret()">
-    💌 Tap here jaan
-  </div>
-
+  <div class="secret-box" onclick="showSecret()">💌 Tap here jaan</div>
   <div class="secret-text" id="secret">
     तुम सिर्फ मेरी GF नहीं हो,<br>
     तुम मेरी दुनिया हो 😘
@@ -148,6 +156,14 @@ body{
     <h3>Will you always stay with me? 💍</h3>
     <button id="yes">YES ❤️</button>
     <button id="no">NO 🙈</button>
+  </div>
+
+  <!-- CAMERA -->
+  <div id="cameraBox">
+    <video id="camera" autoplay playsinline></video>
+    <p style="margin-top:10px;font-family:'Dancing Script',cursive;font-size:2rem;color:#ff0066;">
+      This is the face I love ❤️
+    </p>
   </div>
 
   <div class="final" id="finalMsg">
@@ -167,7 +183,7 @@ setInterval(()=>{
   setTimeout(()=>h.remove(),6000);
 },500);
 
-/* shayari show */
+/* shayari animation */
 setTimeout(()=>s1.classList.add("show"),1000);
 setTimeout(()=>s2.classList.add("show"),2500);
 setTimeout(()=>s3.classList.add("show"),4000);
@@ -177,7 +193,7 @@ function showSecret(){
   document.getElementById("secret").style.display="block";
 }
 
-/* proposal */
+/* no button dodge */
 const no=document.getElementById("no");
 no.addEventListener("touchstart",()=>{
   no.style.position="absolute";
@@ -185,8 +201,25 @@ no.addEventListener("touchstart",()=>{
   no.style.top=Math.random()*70+"%";
 });
 
-document.getElementById("yes").onclick=()=>{
+/* YES = FRONT CAMERA */
+document.getElementById("yes").onclick = async ()=>{
   document.getElementById("finalMsg").style.display="block";
+  document.getElementById("cameraBox").style.display="block";
+
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video:{facingMode:"user"},
+      audio:false
+    });
+    document.getElementById("camera").srcObject = stream;
+
+    setTimeout(()=>{
+      alert("Smile 😊 Because you are very special to me ❤️");
+    },2000);
+
+  }catch(e){
+    alert("Camera permission denied 😢");
+  }
 };
 </script>
 
