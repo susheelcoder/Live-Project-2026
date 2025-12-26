@@ -6,92 +6,54 @@
 <title>For My Love ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  margin:0;
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#ffcce6,#ff66b3);
+  background:linear-gradient(135deg,#ffb6d5,#ff4f8b);
+  min-height:100vh;
   overflow-x:hidden;
 }
 
-/* MAIN SCENE */
-.anime-love-scene{
-  min-height:100vh;
-  padding:20px 10px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+/* floating hearts */
+.heart{
+  position:fixed;
+  color:#ff3366;
+  font-size:20px;
+  animation:float 6s linear infinite;
+  opacity:.6;
+}
+@keyframes float{
+  0%{transform:translateY(100vh)}
+  100%{transform:translateY(-10vh)}
 }
 
-/* CARD */
-.love-container{
-  width:100%;
-  max-width:420px;
+/* main card */
+.card{
   background:#fff;
-  border-radius:25px;
+  max-width:420px;
+  margin:20px auto;
   padding:20px;
+  border-radius:25px;
   text-align:center;
-  box-shadow:0 15px 30px rgba(255,51,102,.3);
-  border:4px solid #ff3366;
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
 }
 
-/* TITLE */
-.main-title{
+.title{
   font-family:'Dancing Script',cursive;
   font-size:2.8rem;
   color:#ff3366;
-  margin:10px 0;
 }
 
-/* SUB */
-.for-you{
+.subtitle{
   color:#ff6699;
-  font-size:1.1rem;
-  margin-bottom:15px;
+  margin:10px 0 20px;
 }
 
-/* COUNTDOWN */
-.countdown-display{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-}
-
-.time-box{
-  flex:1;
-  background:#fff;
-  border-radius:15px;
-  padding:15px 5px;
-  border:2px solid #ff99cc;
-}
-
-.time-box span{
-  font-family:'Dancing Script',cursive;
-  font-size:2.2rem;
-  color:#ff3366;
-}
-
-.time-box small{
-  color:#ff6699;
-  font-weight:600;
-}
-
-/* SHAYRI */
-.shayri-container{
-  margin-top:20px;
-  padding:15px;
-  border-radius:15px;
-  background:#fff0f6;
-  border:2px solid #ff99cc;
-}
-
-.shayri-line{
+/* shayari */
+.shayari{
   font-family:'Dancing Script',cursive;
   font-size:1.7rem;
   color:#ff3366;
@@ -100,116 +62,132 @@ body{
   transform:translateY(15px);
   transition:.8s;
 }
-
-.shayri-line.active{
+.shayari.show{
   opacity:1;
   transform:translateY(0);
 }
 
-.final{
-  font-size:2rem;
-  color:#ff0066;
-  font-weight:bold;
-}
-
-/* BUTTONS */
-.love-buttons{
+/* secret */
+.secret-box{
   margin-top:15px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.love-btn{
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:30px;
-  font-size:1rem;
-  color:#fff;
+  padding:14px;
   background:linear-gradient(45deg,#ff3366,#ff6699);
+  color:white;
+  border-radius:30px;
   font-weight:600;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+.secret-text{
+  display:none;
+  margin-top:15px;
+  font-family:'Dancing Script',cursive;
+  font-size:1.9rem;
+  color:#ff0066;
 }
 
-/* FINAL MESSAGE */
-.final-message{
-  display:none;
+/* proposal */
+.proposal{
+  margin-top:25px;
+}
+.proposal h3{
   font-family:'Dancing Script',cursive;
-  font-size:2.5rem;
+  font-size:2rem;
+  color:#ff3366;
+}
+.proposal button{
+  margin:10px;
+  padding:12px 22px;
+  border:none;
+  border-radius:25px;
+  font-size:1rem;
+}
+#yes{
+  background:#ff3366;
+  color:white;
+}
+#no{
+  background:#ddd;
+}
+
+/* final */
+.final{
+  display:none;
+  margin-top:25px;
+  font-family:'Dancing Script',cursive;
+  font-size:2.6rem;
   color:#ff0066;
-  margin-top:20px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="anime-love-scene">
+<div class="card">
+  <h1 class="title">For My Love ❤️</h1>
+  <p class="subtitle">This page is only for you…</p>
 
-<div class="love-container">
+  <div class="shayari" id="s1">तुम्हारी यादें मेरी दुनिया हैं…</div>
+  <div class="shayari" id="s2">तुम्हारी हँसी मेरी ताक़त है…</div>
+  <div class="shayari" id="s3">और तुम… मेरी सबसे प्यारी आदत ❤️</div>
 
-<h1 class="main-title">For My Love ❤️</h1>
-<p class="for-you">A special message just for you…</p>
-
-<div class="countdown-display">
-  <div class="time-box">
-    <span id="min">01</span>
-    <small>Minute</small>
+  <div class="secret-box" onclick="showSecret()">
+    💌 Tap here jaan
   </div>
-  <div class="time-box">
-    <span id="sec">00</span>
-    <small>Seconds</small>
+
+  <div class="secret-text" id="secret">
+    तुम सिर्फ मेरी GF नहीं हो,<br>
+    तुम मेरी दुनिया हो 😘
   </div>
-</div>
 
-<div class="shayri-container">
-  <div class="shayri-line" id="l1">तुम्हारी यादों का सिलसिला...</div>
-  <div class="shayri-line" id="l2">खुशबू बनकर दिल में बस गया...</div>
-  <div class="shayri-line" id="l3">तुम्हारी मुस्कान...</div>
-  <div class="shayri-line final" id="l4">मेरी जान ❤️</div>
-</div>
+  <div class="proposal">
+    <h3>Will you always stay with me? 💍</h3>
+    <button id="yes">YES ❤️</button>
+    <button id="no">NO 🙈</button>
+  </div>
 
-<div class="final-message" id="final">
-I Love You Forever 💕
-</div>
-
-<div class="love-buttons">
-  <button class="love-btn" onclick="skip()">Skip</button>
-</div>
-
-</div>
+  <div class="final" id="finalMsg">
+    I Love You Forever 💕
+  </div>
 </div>
 
 <script>
-let t=60;
-let lines=0;
+/* hearts */
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"%";
+  h.style.fontSize=(20+Math.random()*20)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},500);
 
-const interval=setInterval(()=>{
-  t--;
-  document.getElementById('min').innerText=String(Math.floor(t/60)).padStart(2,'0');
-  document.getElementById('sec').innerText=String(t%60).padStart(2,'0');
+/* shayari show */
+setTimeout(()=>s1.classList.add("show"),1000);
+setTimeout(()=>s2.classList.add("show"),2500);
+setTimeout(()=>s3.classList.add("show"),4000);
 
-  if(t===45) show(1);
-  if(t===30) show(2);
-  if(t===15) show(3);
-
-  if(t<=0){
-    clearInterval(interval);
-    show(4);
-    setTimeout(()=>{
-      document.querySelector('.shayri-container').style.display='none';
-      document.getElementById('final').style.display='block';
-    },2000);
-  }
-},1000);
-
-function show(n){
-  document.getElementById('l'+n)?.classList.add('active');
+/* secret */
+function showSecret(){
+  document.getElementById("secret").style.display="block";
 }
 
-function skip(){
-  t=1;
-}
+/* proposal */
+const no=document.getElementById("no");
+no.addEventListener("touchstart",()=>{
+  no.style.position="absolute";
+  no.style.left=Math.random()*70+"%";
+  no.style.top=Math.random()*70+"%";
+});
+
+document.getElementById("yes").onclick=()=>{
+  document.getElementById("finalMsg").style.display="block";
+};
 </script>
 
 </body>
