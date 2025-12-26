@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Only For You ❤️</title>
+
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+}
+
+.container{
+  background:#fff;
+  padding:25px;
+  border-radius:25px;
+  text-align:center;
+  max-width:360px;
+  width:92%;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  position:relative;
+}
+
+h1{ color:#ff3366; margin:10px 0; }
+p{ color:#444; }
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  font-size:1.1rem;
+  cursor:pointer;
+  margin:10px;
+}
+
+#yes{ background:#ff3366; color:#fff; }
+#no{ background:#ccc; }
+
+#finalMsg{ display:none; }
+
+#cameraBox{
+  display:none;
+  margin-top:10px;
+  position:relative;
+}
+
+video{
+  width:100%;
+  border-radius:20px;
+  border:4px solid #ff3366;
+  filter:brightness(1.15) contrast(1.1) saturate(1.35) blur(0.6px);
+  box-shadow:0 0 25px rgba(255,51,102,.6);
+}
+
+.glow{
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  pointer-events:none;
+  box-shadow:0 0 25px rgba(255,105,180,.8),
+              inset 0 0 15px rgba(255,182,193,.6);
+}
+
+/* Progress bar */
+.progress{
+  height:8px;
+  background:#eee;
+  border-radius:10px;
+  overflow:hidden;
+  margin:10px 0;
+}
+.bar{
+  height:100%;
+  width:0%;
+  background:#ff3366;
+  transition:.5s;
+}
+
+/* Tap heart game */
+#tapHeart{
+  font-size:2.5rem;
+  display:none;
+  cursor:pointer;
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.2)}
+  100%{transform:scale(1)}
+}
+
+/* Floating hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:24px;
+  animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-100vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Ek Question ❤️</h1>
+  <p>Kya tum meri duniya banogi? 🥺</p>
+
+  <button id="yes">YES 😍</button>
+  <button id="no">NO 🙈</button>
+
+  <div class="progress">
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <p id="typeText"></p>
+
+  <div id="tapHeart">💖</div>
+
+  <div id="finalMsg">
+    <h1>I Love You ❤️</h1>
+
+    <div id="cameraBox">
+      <video id="camera" autoplay playsinline></video>
+      <div class="glow"></div>
+      <p style="color:#ff3366;">This is the face I love 💖</p>
+    </div>
+  </div>
+</div>
+
+<script>
+let progress=0, heartCount=0;
+let texts=[
+ "Thoda ruk jao… kuchh special hai 😌",
+ "Tumhari smile bahut cute hai 😊",
+ "Bas thoda aur… ❤️",
+ "Tum yahan tak aa hi gayi ho 😍",
+ "Last surprise aa raha hai… 🔓"
+];
+
+// Camera preload
+navigator.mediaDevices.getUserMedia({
+  video:{facingMode:"user"},audio:false
+}).then(s=>{
+  camera.srcObject=s;
+});
+
+// YES
+yes.onclick=()=>{
+  finalMsg.style.display="block";
+  cameraBox.style.display="block";
+  setInterval(createHeart,400);
+  startStory();
+};
+
+// NO
+no.onclick=()=>alert("Ye button sirf decoration ke liye hai 😌");
+
+// Typing + progress story
+function startStory(){
+  let i=0;
+  let interval=setInterval(()=>{
+    type(texts[i]);
+    progress+=20;
+    bar.style.width=progress+"%";
+    i++;
+
+    if(i===3){
+      tapHeart.style.display="block";
+    }
+
+    if(i>=texts.length){
+      clearInterval(interval);
+    }
+  },30000); // every 30 sec (5 steps = 2.5 min + game)
+}
+
+// Typing effect
+function type(text){
+  typeText.innerHTML="";
+  let i=0;
+  let t=setInterval(()=>{
+    typeText.innerHTML+=text[i];
+    i++;
+    if(i>=text.length) clearInterval(t);
+  },60);
+}
+
+// Heart tap game
+tapHeart.onclick=()=>{
+  heartCount++;
+  tapHeart.innerHTML="💖 "+heartCount;
+  if(heartCount>=15){
+    tapHeart.style.display="none";
+    alert("Unlocked 🔓\nTum sach me special ho ❤️");
+  }
+};
+
+// floating hearts
+function createHeart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+</script>
+
+</body>
+</html>
