@@ -1,16 +1,17 @@
-
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 Countdown & Celebration 🎉 (Mobile Ready)</title>
+    <title>2026 Grand Celebration 🎆</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    
     <style>
         /* General Styles and Background */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
-            background: linear-gradient(135deg, #1f004b 0%, #05001a 100%);
+            background: #000; /* Black background for star effect */
             color: white;
             display: flex;
             flex-direction: column;
@@ -19,108 +20,145 @@
             min-height: 100vh;
             overflow: hidden;
             text-align: center;
+            perspective: 1px; /* Parallax Setup */
+        }
+        
+        /* Parallax Layer (Simulated depth) */
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: radial-gradient(ellipse at bottom, #1f004b 0%, #05001a 100%);
+            transform: translateZ(-1px) scale(2); /* Background ko peeche dhakela */
+            z-index: 1;
         }
 
-        /* Countdown Container */
         .countdown-container {
-            padding: 30px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 40px rgba(0, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.8) inset;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-family: 'Orbitron', sans-serif; /* Techy font for countdown */
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            /* Glowing Border Effect */
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.7), 0 0 100px rgba(255, 0, 255, 0.4);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 255, 255, 0.5);
             z-index: 10;
             margin: 20px;
-            max-width: 90%; /* Mobile ke liye width fix ki */
+            max-width: 90%;
+            transition: all 0.5s ease;
+        }
+        
+        /* Interactive Particle/Star System */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 5px #fff, 0 0 10px #ffcc00; /* Star glow */
+            animation: twinkle 5s infinite alternate;
+            z-index: 2;
         }
 
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.2; transform: scale(1); }
+        }
+        
+        /* Headings */
         h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             color: #ffeb3b; 
-            text-shadow: 0 0 10px #ff9800;
-            margin-bottom: 20px;
+            text-shadow: 0 0 15px #ff9800, 0 0 25px #ffcc00;
+            margin-bottom: 25px;
+            text-transform: uppercase;
         }
 
         /* Countdown Display Units */
         #countdown {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            flex-wrap: wrap; /* Important: Agar screen choti ho to units wrap ho jayenge */
+            gap: 25px;
+            margin-top: 30px;
+            flex-wrap: wrap;
         }
 
         .time-unit {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 15px 10px; /* Padding kam ki */
-            border-radius: 10px;
-            min-width: 70px; /* Thoda chota kiya */
-            transition: all 0.3s ease;
-            cursor: default;
-            user-select: none;
-            flex-grow: 1; /* Units ko barabar jagah dene ke liye */
-            margin: 5px; /* Units ke beech thoda space */
+            padding: 20px;
+            border-radius: 12px;
+            min-width: 80px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #00ffc8;
+            transition: transform 0.2s;
+        }
+        .time-unit:hover {
+            transform: scale(1.1);
+            background: rgba(0, 255, 200, 0.2);
         }
 
         .time-unit span {
             display: block;
-            font-size: 2.5em; /* Font size kam ki */
+            font-size: 3.5em; 
             font-weight: bold;
             color: #00ffc8; 
-            text-shadow: 0 0 5px #00ffc8;
+            text-shadow: 0 0 8px #00ffc8, 0 0 15px #00aaff;
+            line-height: 1;
         }
 
         .time-unit small {
-            font-size: 0.8em; /* Font size kam ki */
+            font-size: 1em;
             text-transform: uppercase;
             color: #ccc;
+            margin-top: 5px;
+            display: block;
         }
 
         /* New Year Celebration Message */
         #newYearMessage {
-            font-size: 4em;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5em;
             color: #ff4081; 
-            text-shadow: 0 0 20px #ff4081, 0 0 40px #ff4081;
+            text-shadow: 0 0 30px #ff4081, 0 0 60px #ff80ab;
             display: none; 
-            animation: fadeIn 2s forwards;
-            padding: 10px;
-        }
-
-        /* --- MEDIA QUERIES for Mobile --- */
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em; /* Phone screen ke liye heading choti ki */
-            }
-
-            #countdown {
-                gap: 10px;
-            }
-
-            .time-unit {
-                min-width: 60px; /* Aur chota kiya */
-                padding: 10px 5px;
-            }
-
-            .time-unit span {
-                font-size: 2em; /* Phone screen ke liye numbers chote kiye */
-            }
-            
-            .time-unit small {
-                font-size: 0.7em;
-            }
-
-            #newYearMessage {
-                font-size: 2.5em; /* Message size chota kiya */
-            }
+            animation: celebrationBounce 2s infinite, fadeIn 2s forwards;
+            padding: 20px;
         }
         
-        /* Baaki animation aur JS code same rahega */
+        /* Animation Keyframes */
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
+        
+        @keyframes celebrationBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
 
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .countdown-container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            .time-unit {
+                min-width: 60px;
+                padding: 15px 10px;
+                margin: 5px;
+            }
+            .time-unit span {
+                font-size: 2.5em;
+            }
+            #newYearMessage {
+                font-size: 3em;
+            }
+        }
+        
+        /* Confetti Styles (Same as before) */
         .confetti-piece {
             position: absolute;
             width: 8px;
@@ -129,6 +167,7 @@
             top: -10vh; 
             opacity: 0;
             animation: fall-and-spin 5s linear infinite;
+            z-index: 5; /* Confetti ko upar rakha */
         }
 
         @keyframes fall-and-spin {
@@ -139,8 +178,10 @@
 </head>
 <body>
 
+    <div class="parallax-bg"></div> <div id="stars-container"></div> 
+
     <div class="countdown-container" id="mainContainer">
-        <h1>2026 New Year Countdown</h1>
+        <h1>New Year 2026 Launch Sequence</h1>
         
         <div id="countdown">
             <div class="time-unit" id="days"><span>00</span><small>Days</small></div>
@@ -149,15 +190,14 @@
             <div class="time-unit" id="seconds"><span>00</span><small>Seconds</small></div>
         </div>
         
-        <p id="newYearMessage">🎉 HAPPY NEW YEAR 2026! 🥳</p>
+        <p id="newYearMessage">🎉 INITIATE CELEBRATION! 2026 IS HERE! 🥳</p>
     </div>
 
     <script>
-        // Current time is Friday, December 26, 2025 at 9:50:48 PM IST.
         const countdownDate = new Date("Jan 1, 2026 00:00:00").getTime();
-        
         const confettiColors = ['#ff4081', '#00ffc8', '#ffeb3b', '#64ffda', '#ff80ab'];
 
+        // 1. Countdown Logic (Same as before)
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = countdownDate - now;
@@ -176,6 +216,7 @@
                 clearInterval(interval);
                 document.getElementById("countdown").style.display = "none";
                 document.getElementById("newYearMessage").style.display = "block";
+                document.getElementById("mainContainer").style.boxShadow = '0 0 100px #ff4081, 0 0 150px #ff80ab'; // Final glow
                 startConfettiBlast(); 
             }
         }
@@ -183,9 +224,9 @@
         updateCountdown(); 
         const interval = setInterval(updateCountdown, 1000);
         
-        // --- Confetti Generation ---
-
+        // 2. Confetti Logic (Same as before)
         function createConfettiPiece() {
+            // ... (Confetti creation code) ...
             const piece = document.createElement('div');
             piece.className = 'confetti-piece';
             
@@ -193,7 +234,6 @@
             piece.style.width = size + 'px';
             piece.style.height = size * (Math.random() > 0.5 ? 1 : 2) + 'px';
             piece.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-            
             piece.style.left = Math.random() * 100 + 'vw';
             
             piece.style.setProperty('--x-end', (Math.random() - 0.5) * 200 + 'px'); 
@@ -203,22 +243,46 @@
             
             document.body.appendChild(piece);
 
-            setTimeout(() => {
-                piece.remove();
-            }, 7000); 
+            setTimeout(() => { piece.remove(); }, 7000); 
         }
 
         function startConfettiBlast() {
-             for(let i=0; i<50; i++) {
-                createConfettiPiece();
-             }
+             for(let i=0; i<50; i++) { createConfettiPiece(); }
              setInterval(createConfettiPiece, 500); 
         }
+        
+        // Initial Confetti drop
+        for(let i=0; i<15; i++) { createConfettiPiece(); }
 
-        for(let i=0; i<15; i++) {
-            createConfettiPiece();
+        
+        // 3. Star/Particle Logic (NEW)
+        const starsContainer = document.body;
+        const numberOfStars = 70; // Stars ki sankhya
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            const size = Math.random() * 3 + 1; // 1px to 4px
+            star.style.width = star.style.height = size + 'px';
+            
+            // Random position across the screen
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            
+            // Random animation speed and delay
+            star.style.animationDuration = Math.random() * 4 + 3 + 's'; // 3s to 7s
+            star.style.animationDelay = Math.random() * 5 + 's';
+            
+            starsContainer.appendChild(star);
+        }
+
+        // Generate stars
+        for (let i = 0; i < numberOfStars; i++) {
+            createStar();
         }
 
     </script>
 </body>
 </html>
+
