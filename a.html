@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Special One ❤️</title>
+<title>Only For You ❤️</title>
 
 <style>
 body{
@@ -12,7 +12,7 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
   font-family:'Poppins',sans-serif;
   overflow:hidden;
 }
@@ -22,25 +22,14 @@ body{
   padding:30px;
   border-radius:25px;
   text-align:center;
-  max-width:350px;
+  max-width:360px;
   width:90%;
-  box-shadow:0 20px 40px rgba(0,0,0,.2);
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
   position:relative;
 }
 
-h1{
-  color:#ff3366;
-  font-size:2rem;
-}
-
-p{
-  color:#444;
-  font-size:1.1rem;
-}
-
-.buttons{
-  margin-top:20px;
-}
+h1{ color:#ff3366; }
+p{ color:#444; }
 
 button{
   padding:12px 25px;
@@ -51,29 +40,42 @@ button{
   margin:10px;
 }
 
-#yes{
-  background:#ff3366;
-  color:#fff;
-}
+#yes{ background:#ff3366; color:#fff; }
+#no{ background:#ccc; }
 
-#no{
-  background:#ccc;
-}
-
-#finalMsg{
-  display:none;
-  margin-top:20px;
-}
+#finalMsg{ display:none; }
 
 #cameraBox{
   display:none;
   margin-top:15px;
+  position:relative;
 }
 
+/* 🎥 CAMERA + BEAUTY FILTER */
 video{
   width:100%;
   border-radius:20px;
   border:4px solid #ff3366;
+
+  /* BEAUTY FILTER */
+  filter:
+    brightness(1.15)
+    contrast(1.1)
+    saturate(1.35)
+    blur(0.6px);
+
+  box-shadow:0 0 25px rgba(255,51,102,0.6);
+}
+
+/* Glow overlay */
+.glow{
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  pointer-events:none;
+  box-shadow:
+    0 0 25px rgba(255,105,180,0.8),
+    inset 0 0 15px rgba(255,182,193,0.6);
 }
 
 /* Floating hearts */
@@ -82,12 +84,11 @@ video{
   bottom:-20px;
   font-size:24px;
   animation:floatUp 6s linear infinite;
-  color:#ff3366;
 }
 
 @keyframes floatUp{
-  0%{transform:translateY(0) scale(1); opacity:1;}
-  100%{transform:translateY(-100vh) scale(1.5); opacity:0;}
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-100vh);opacity:0;}
 }
 </style>
 </head>
@@ -98,18 +99,17 @@ video{
   <h1>Ek Question ❤️</h1>
   <p>Kya tum meri life ka sabse special hissa banogi? 🥺</p>
 
-  <div class="buttons">
-    <button id="yes">YES 😍</button>
-    <button id="no">NO 🙈</button>
-  </div>
+  <button id="yes">YES 😍</button>
+  <button id="no">NO 🙈</button>
 
   <div id="finalMsg">
     <h1>I Love You ❤️</h1>
-    <p>Jab bhi tum smile karti ho,<br> meri duniya roshan ho jaati hai ✨</p>
+    <p>Tumhari muskaan hi meri duniya hai ✨</p>
 
     <div id="cameraBox">
       <video id="camera" autoplay playsinline></video>
-      <p style="margin-top:10px;color:#ff3366;font-size:1.3rem;">
+      <div class="glow"></div>
+      <p style="color:#ff3366;font-size:1.3rem;margin-top:10px;">
         This is the face I love 💖
       </p>
     </div>
@@ -117,44 +117,46 @@ video{
 </div>
 
 <script>
-// YES BUTTON
-document.getElementById("yes").onclick = async ()=>{
-  document.getElementById("finalMsg").style.display="block";
-  document.getElementById("cameraBox").style.display="block";
+let cameraStream=null;
 
-  // hearts
-  setInterval(createHeart,400);
-
+/* 🎥 CAMERA CONTROL – PAGE LOAD PAR */
+window.addEventListener("load", async ()=>{
   try{
-    const stream = await navigator.mediaDevices.getUserMedia({
+    cameraStream = await navigator.mediaDevices.getUserMedia({
       video:{facingMode:"user"},
       audio:false
     });
-    document.getElementById("camera").srcObject = stream;
+    document.getElementById("camera").srcObject = cameraStream;
   }catch(e){
     alert("Camera allow karo jaan ❤️");
   }
+});
+
+/* YES BUTTON */
+document.getElementById("yes").onclick = ()=>{
+  document.getElementById("finalMsg").style.display="block";
+  document.getElementById("cameraBox").style.display="block";
+
+  setInterval(createHeart,400);
 
   setTimeout(()=>{
-    alert("Smile 😊 Because you are very special to me ❤️");
-  },2000);
+    alert("Beauty Mode ON ✨\nBecause you are already beautiful ❤️");
+  },1000);
 };
 
-// NO BUTTON FUN
+/* NO BUTTON FUN */
 document.getElementById("no").onclick = ()=>{
-  alert("NO option kaam hi nahi karta 😌❤️");
+  alert("NO option sirf decoration ke liye hai 😌❤️");
 };
 
-// HEART FUNCTION
+/* HEART FUNCTION */
 function createHeart(){
-  const heart = document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML="❤️";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.animationDuration=(3+Math.random()*3)+"s";
-  document.body.appendChild(heart);
-
-  setTimeout(()=>heart.remove(),6000);
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
 }
 </script>
 
