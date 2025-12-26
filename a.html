@@ -3,259 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Only For You ❤️</title>
+<title>Love Surprise</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family: 'Segoe UI', sans-serif;}
 body{
-  margin:0;
   min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
   background:linear-gradient(135deg,#ff758c,#ff7eb3);
-  font-family:'Poppins',sans-serif;
-  overflow:hidden;
-}
-
-.container{
-  background:#fff;
-  padding:25px;
-  border-radius:25px;
-  text-align:center;
-  max-width:360px;
-  width:92%;
-  box-shadow:0 20px 40px rgba(0,0,0,.25);
-  position:relative;
-}
-
-h1{ color:#ff3366; margin:10px 0; }
-p{ color:#444; }
-
-button{
-  padding:12px 25px;
-  border:none;
-  border-radius:30px;
-  font-size:1.1rem;
-  cursor:pointer;
-  margin:10px;
-}
-
-#yes{ background:#ff3366; color:#fff; }
-#no{ background:#ccc; }
-
-/* 🔊 Sound Button */
-#soundBtn{
-  position:absolute;
-  top:12px;
-  right:12px;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  background:#ff3366;
-  color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  cursor:pointer;
-  box-shadow:0 5px 15px rgba(0,0,0,.3);
-}
-
-#finalMsg{ display:none; }
-
-#cameraBox{
-  display:none;
-  margin-top:10px;
-  position:relative;
-}
-
-video{
-  width:100%;
-  border-radius:20px;
-  border:4px solid #ff3366;
-  filter:brightness(1.15) contrast(1.1) saturate(1.35) blur(0.6px);
-  box-shadow:0 0 25px rgba(255,51,102,.6);
-}
-
-.glow{
-  position:absolute;
-  inset:0;
-  border-radius:20px;
-  pointer-events:none;
-  box-shadow:0 0 25px rgba(255,105,180,.8),
-              inset 0 0 15px rgba(255,182,193,.6);
-}
-
-/* Progress bar */
-.progress{
-  height:8px;
-  background:#eee;
-  border-radius:10px;
   overflow:hidden;
-  margin:10px 0;
+  color:#fff;
 }
-.bar{
+
+/* Pages */
+.page{
+  position:absolute;
+  width:100%;
   height:100%;
-  width:0%;
-  background:#ff3366;
-  transition:.5s;
-}
-
-/* Tap heart game */
-#tapHeart{
-  font-size:2.5rem;
   display:none;
-  cursor:pointer;
-  animation:pulse 1s infinite;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  text-align:center;
 }
+.page.active{display:flex;}
 
+/* Top Question */
+h1{
+  font-size:2rem;
+  margin-bottom:20px;
+  animation:pulse 2s infinite;
+}
 @keyframes pulse{
   0%{transform:scale(1)}
-  50%{transform:scale(1.2)}
+  50%{transform:scale(1.05)}
   100%{transform:scale(1)}
 }
 
-/* Floating hearts */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:24px;
-  animation:floatUp 6s linear infinite;
+/* Buttons */
+button{
+  padding:12px 25px;
+  font-size:1rem;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  margin:10px;
+  transition:.3s;
+}
+.nextBtn{background:#fff;color:#ff4f7b;}
+.yes{background:#00ffcc;color:#000;}
+.no{background:#ff3333;color:#fff;position:absolute;}
+
+/* Shayari */
+.shayari{
+  font-size:1.2rem;
+  margin:15px 0;
+  animation:fade 2s infinite alternate;
+}
+@keyframes fade{from{opacity:.6}to{opacity:1}}
+
+/* Camera */
+#cameraBox{
+  width:260px;
+  height:360px;
+  border-radius:20px;
+  border:4px solid #fff;
+  overflow:hidden;
+  margin-top:15px;
+  position:relative;
+  box-shadow:0 0 20px rgba(255,255,255,.6);
+}
+video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(1.15) contrast(1.1) saturate(1.3) blur(.6px);
 }
 
-@keyframes floatUp{
-  0%{transform:translateY(0);opacity:1;}
-  100%{transform:translateY(-100vh);opacity:0;}
+/* Hearts & Flowers */
+.fall{
+  position:fixed;
+  top:-50px;
+  font-size:24px;
+  animation:fall linear forwards;
+}
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0}
+}
+
+/* Sound Button */
+.soundBtn{
+  position:fixed;
+  bottom:15px;
+  right:15px;
+  background:#fff;
+  color:#ff4f7b;
+  font-size:20px;
+  padding:12px;
+  border-radius:50%;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h1>❓ Kya tumne kabhi kisi se saccha pyaar kiya hai?</h1>
+  <button class="nextBtn" onclick="goNext()">Next ➡️</button>
+</div>
 
-  <div id="soundBtn">🔊</div>
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <h1>❤️ Kya tum mujhse pyaar karti ho?</h1>
+  <button class="yes" onclick="yesLove()">YES 💖</button>
+  <button class="no" id="noBtn">NO 😅</button>
+</div>
 
-  <h1>Ek Question ❤️</h1>
-  <p>
-    Dil se poochhna tha…  
-    <br>kya tum meri duniya banogi? 🥺
-  </p>
-
-  <button id="yes">YES 😍</button>
-  <button id="no">NO 🙈</button>
-
-  <div class="progress">
-    <div class="bar" id="bar"></div>
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <h1>🌹 Tumhari muskaan meri duniya hai 🌹</h1>
+  <div class="shayari">
+    "Tumhari ek jhalak hi kaafi hai,<br>
+     Dil har baar tum par haar jaata hai ❤️"
   </div>
 
-  <p id="typeText"></p>
-
-  <div id="tapHeart">💖</div>
-
-  <div id="finalMsg">
-    <h1>I Love You ❤️</h1>
-    <p>
-      Tumhari ek smile  
-      <br>mere din ko special bana deti hai ✨
-    </p>
-
-    <div id="cameraBox">
-      <video id="camera" autoplay playsinline></video>
-      <div class="glow"></div>
-      <p style="color:#ff3366;">This is the face I love 💖</p>
-    </div>
+  <div id="cameraBox">
+    <video id="video" autoplay playsinline></video>
   </div>
 </div>
 
-<!-- 🎧 AUDIO -->
+<!-- Sound -->
+<button class="soundBtn" onclick="playLove()">🔊</button>
 <audio id="loveAudio">
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_0c84c3c8d8.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_7b98a7d49d.mp3" type="audio/mp3">
 </audio>
 
 <script>
-let progress=0, heartCount=0;
-const camera = document.getElementById("camera");
+function goNext(){
+  document.getElementById("page1").classList.remove("active");
+  document.getElementById("page2").classList.add("active");
+}
 
-let texts=[
- "Thoda ruk jao… kuchh special hai 😌",
- "Tumhari smile bahut cute hai 😊",
- "Dil se kaha ja raha hai ❤️",
- "Bas thoda aur… 😍",
- "Tum sach me special ho 🔓"
-];
-
-// Camera preload
-navigator.mediaDevices.getUserMedia({
-  video:{facingMode:"user"},audio:false
-}).then(s=>{
-  camera.srcObject=s;
+/* NO button movement */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.left=Math.random()*80+"%";
+  noBtn.style.top=Math.random()*80+"%";
 });
 
-// YES
-yes.onclick=()=>{
-  finalMsg.style.display="block";
-  cameraBox.style.display="block";
-  setInterval(createHeart,400);
-  startStory();
-};
-
-// NO
-no.onclick=()=>alert("NO sirf mazaak ke liye hai 😌❤️");
-
-// Typing + progress story
-function startStory(){
-  let i=0;
-  let interval=setInterval(()=>{
-    type(texts[i]);
-    progress+=20;
-    bar.style.width=progress+"%";
-    i++;
-
-    if(i===3){
-      tapHeart.style.display="block";
-    }
-
-    if(i>=texts.length){
-      clearInterval(interval);
-    }
-  },30000); // ~2.5 min + interaction
+/* YES clicked */
+function yesLove(){
+  document.getElementById("page2").classList.remove("active");
+  document.getElementById("page3").classList.add("active");
+  startCamera();
+  startRain();
 }
 
-// Typing effect
-function type(text){
-  typeText.innerHTML="";
-  let i=0;
-  let t=setInterval(()=>{
-    typeText.innerHTML+=text[i];
-    i++;
-    if(i>=text.length) clearInterval(t);
-  },60);
+/* Camera */
+function startCamera(){
+  navigator.mediaDevices.getUserMedia({video:true})
+  .then(stream=>{
+    document.getElementById("video").srcObject=stream;
+  });
 }
 
-// Heart tap game
-tapHeart.onclick=()=>{
-  heartCount++;
-  tapHeart.innerHTML="💖 "+heartCount;
-  if(heartCount>=15){
-    tapHeart.style.display="none";
-    alert("Unlocked 🔓\nTum bahut special ho ❤️");
-  }
-};
-
-// Floating hearts
-function createHeart(){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
+/* Hearts & Flowers rain */
+function startRain(){
+  setInterval(()=>{
+    const el=document.createElement("div");
+    el.className="fall";
+    el.innerHTML=Math.random()>.5?"❤️":"🌸";
+    el.style.left=Math.random()*100+"vw";
+    el.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),6000);
+  },300);
 }
 
-// Sound button
-soundBtn.onclick=()=>{
-  loveAudio.play();
-};
+/* Sound */
+function playLove(){
+  document.getElementById("loveAudio").play();
+}
 </script>
 
 </body>
