@@ -795,10 +795,81 @@ main page
 ============= */
 
 
-/* about page  */
+
+
+
+/* ===== ABOUT PAGE ===== */
 .haproven-about {
     margin-top: 100px;
-    /* border: 2px solid red; */
+    padding: 20px;
+}
+
+.about-l {
+    max-width: 1000px;
+    margin-bottom: 30px;
+}
+
+.about-senter {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Focus section */
+.focus-section {
+    flex: 1;
+    padding: 25px;
+    background-color: rgba(242, 243, 244, 0.957);
+    border-radius: 12px;
+}
+
+.focus-section ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.focus-section li {
+    padding: 7px 0;
+}
+
+/* Video section */
+.video-section {
+    flex: 1;
+}
+
+.video-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1050px) {
+    .about-senter {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 750px) {
+    .about-senter {
+        flex-direction: column;
+    }
+
+    .focus-section {
+        text-align: center;
+    }
+}
+
+/* about page  */
+
+/* .haproven-about {
+    margin-top: 100px;
     height: 60vh;
 }
 
@@ -831,14 +902,12 @@ main page
 
 .focus-section {
     background-color: rgba(242, 243, 244, 0.957);
-}
+} */
 
 
-
+/* 
 @media (max-width:750px) {
     .haproven-about {
-        /* margin-top: 100px; */
-        /* border: 2px solid red; */
         height: auto;
     }
 
@@ -858,7 +927,7 @@ main page
     .video-container video {
         width: 100%;
     }
-}
+}  */
 
 
 /* =======
