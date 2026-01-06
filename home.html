@@ -5,286 +5,222 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/CSS/home.css">
 </head>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: white;
+        color: black;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 10px;
+        z-index: 9;
+    }
+</style>
 
 <body>
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <!-- Left Side: Logo -->
-                <div class="header-left">
-                    <a href="/" class="logo">
-                        <svg class="logo-icon" viewBox="0 0 24 24" width="32" height="32">
-                            <path fill="#3b82f6" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg>
-                        <span class="logo-text">Haproven</span>
-                    </a>
+        <div class="div">
+            <div class="div1">
+                <a href="/">Haproven</a>
+
+                <div class="menu-btn" onclick="toggleMenu()">
+                    <span>-</span>
+                    <span>-</span>
+                    <span>-</span>
                 </div>
+            </div>
 
-                <!-- Center: Desktop Navigation -->
-                <nav class="header-center desktop-nav" aria-label="Main Navigation">
-                    <ul class="nav-list">
-                        <li><a href="#home" class="nav-link">Home</a></li>
+            <nav>
+                <ul>
+                    <li><a href="#Home">Home</a></li>
 
-                        <li class="dropdown">
-                            <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
-                                Pages
-                                <svg class="dropdown-arrow" viewBox="0 0 24 24" width="12" height="12">
-                                    <path fill="currentColor" d="M7 10l5 5 5-5z" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/pages/html-css-js-compiler/">
-                                        <svg viewBox="0 0 24 24" width="16" height="16">
-                                            <path fill="#3b82f6" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z" />
-                                        </svg>
-                                        HTML/CSS/JS Compiler
-                                    </a></li>
-                                <li><a href="/pages/img-converter/">
-                                        <svg viewBox="0 0 24 24" width="16" height="16">
-                                            <path fill="#3b82f6"
-                                                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" />
-                                        </svg>
-                                        Image Converter
-                                    </a></li>
-                                <li><a href="/pages/sections-library/">
-                                        <svg viewBox="0 0 24 24" width="16" height="16">
-                                            <path fill="#3b82f6" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
-                                        </svg>
-                                        Sections Library
-                                    </a></li>
-                            </ul>
-                        </li>
+                    <li>
+                        <details>
+                            <summary>Pages</summary>
+                            <div>
+                                <ol>
+                                    <li><a href="/pages/html-css-js-compiler/" target="_blank">html-css-js-compiler</a>
+                                    </li>
+                                    <li><a href="/pages/img-converter/" target="_blank">img-converter</a></li>
+                                    <li><a href="/pages/sections-library/" target="_blank">sections-library</a></li>
+                                    <!-- <li>
+                                        <details>
+                                            <summary>Market</summary>
+                                            <div class="Markets">
+                                                <ol>
+                                                    <li>Market</li>
+                                                    <li>Market</li>
+                                                </ol>
+                                            </div>
+                                        </details>
+                                    </li>
+                                    <li>Market</li> -->
+                                </ol>
+                            </div>
+                        </details>
+                    </li>
 
-                        <li class="dropdown">
-                            <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
-                                Profile
-                                <svg class="dropdown-arrow" viewBox="0 0 24 24" width="12" height="12">
-                                    <path fill="currentColor" d="M7 10l5 5 5-5z" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/Profile/abcd/">
-                                        <svg viewBox="0 0 24 24" width="16" height="16">
-                                            <path fill="#3b82f6"
-                                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                        </svg>
-                                        Profile Design
-                                    </a></li>
-                                <li><a href="/Profile/Anand/">
-                                        <svg viewBox="0 0 24 24" width="16" height="16">
-                                            <path fill="#3b82f6"
-                                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                        </svg>
-                                        Anand Parjapati
-                                    </a></li>
-                                <li><a href="/Profile/Yashika/">
-                                        <svg viewBox="0 0 24 24" width="16" height="16">
-                                            <path fill="#3b82f6"
-                                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                        </svg>
-                                        Yashika Srivastava
-                                    </a></li>
-                                <li><a href="/Profile/Suhana/">
-                                        <svg viewBox="0 0 24 24" width="16" height="16">
-                                            <path fill="#3b82f6"
-                                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                        </svg>
-                                        Suhana Chahat Ali
-                                    </a></li>
-                            </ul>
-                        </li>
+                    <li>
+                        <details>
+                            <summary>Profile</summary>
+                            <div>
+                                <ol>
+                                    <li><a href="/Profile/abcd/" target="_blank">Profile design</a></li>
+                                    <li><a href="/Profile/Anand/" target="_blank">Anand Parjapati</a></li>
+                                    <li><a href="/Profile/Yashika/" target="_blank">Yashika Srivastava</a></li>
+                                    <li><a href="/Profile/Suhana/" target="_blank">Suhana Chahat Ali</a></li>
+                                </ol>
+                            </div>
+                        </details>
+                    </li>
 
-                        <li><a href="#about" class="nav-link">About</a></li>
-                        <li><a href="#how-we-work" class="nav-link">How We Work</a></li>
-                        <li><a href="#projects" class="nav-link">Projects</a></li>
-                        <li><a href="#team" class="nav-link">Team</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
-                    </ul>
-                </nav>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#How-at-work">How We Work</a></li>
+                    <li><a href="#Our Projects">Project</a></li>
+                </ul>
 
-                <!-- Right Side: CTA Button & Mobile Menu -->
-                <div class="header-right">
-                    <!-- Join Community Button -->
-                    <a href="/pages/join-haproven.html" class="header-cta">
-                        Join Community
-                    </a>
+                <!-- Search Icon -->
+                <svg onclick="openBox()" class="svg" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5
+                    16 5.91 13.09 3 9.5 3S3 5.91 3 9.5
+                    5.91 16 9.5 16c1.61 0 3.09-.59
+                    4.23-1.57l.27.28v.79l5
+                    4.99L20.49 19l-4.99-5z" />
+                </svg>
+            </nav>
+        </div>
 
-                    <!-- Mobile Menu Button -->
-                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu"
-                        aria-expanded="false">
-                        <span class="menu-line"></span>
-                        <span class="menu-line"></span>
-                        <span class="menu-line"></span>
-                    </button>
-                </div>
+
+        <!-- Search Box -->
+        <div class="surchbox" id="overlayBox">
+            <span class="close" onclick="closeBox()">❌</span>
+            <div class="search-input">
+                <input type="text" id="searchInput" placeholder="Search here...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="search-results-container" id="searchResults">
+                <!-- Search results will appear here -->
             </div>
         </div>
 
-        <!-- Mobile Navigation -->
-        <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
-            <div class="mobile-nav-header">
-                <a href="/" class="mobile-logo">
-                    <svg class="logo-icon" viewBox="0 0 24 24" width="24" height="24">
-                        <path fill="#3b82f6" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
-                    Haproven
-                </a>
-                <button class="mobile-close-btn" onclick="toggleMobileMenu()" aria-label="Close menu">
-                    <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path fill="currentColor"
-                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                    </svg>
-                </button>
-            </div>
 
-            <div class="mobile-nav-content">
-                <ul class="mobile-nav-list">
-                    <li><a href="#home" onclick="toggleMobileMenu()" class="mobile-nav-link">
-                            <svg viewBox="0 0 24 24" width="20" height="20">
-                                <path fill="#3b82f6" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-                            </svg>
-                            Home
-                        </a></li>
+        <!-- Mobile Menu -->
+        <div>
+            <ul class="mobile-menu" id="mobileMenu">
+                <li class="li"><a href="/home.html">Home</a></li>
+                <li class="li"><a href="#What-We-Do">What We Do</a></li>
+                <li class="li"><a href="#about">About</a></li>
+                <li class="li"><a href="#Our Projects">Project</a></li>
 
-                    <li class="mobile-dropdown">
-                        <button class="mobile-dropdown-btn" onclick="toggleMobileDropdown(this)">
-                            <span>
-                                <svg viewBox="0 0 24 24" width="20" height="20">
-                                    <path fill="#3b82f6" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
-                                </svg>
-                                Pages
-                            </span>
-                            <svg class="mobile-dropdown-arrow" viewBox="0 0 24 24" width="16" height="16">
-                                <path fill="currentColor" d="M7 10l5 5 5-5z" />
-                            </svg>
-                        </button>
-                        <ul class="mobile-dropdown-menu">
-                            <li><a href="/pages/html-css-js-compiler/" onclick="toggleMobileMenu()">
-                                    <svg viewBox="0 0 24 24" width="14" height="14">
-                                        <path fill="#3b82f6" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z" />
-                                    </svg>
-                                    HTML/CSS/JS Compiler
-                                </a></li>
-                            <li><a href="/pages/img-converter/" onclick="toggleMobileMenu()">
-                                    <svg viewBox="0 0 24 24" width="14" height="14">
-                                        <path fill="#3b82f6"
-                                            d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" />
-                                    </svg>
-                                    Image Converter
-                                </a></li>
-                            <li><a href="/pages/sections-library/" onclick="toggleMobileMenu()">
-                                    <svg viewBox="0 0 24 24" width="14" height="14">
-                                        <path fill="#3b82f6" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
-                                    </svg>
-                                    Sections Library
-                                </a></li>
-                        </ul>
-                    </li>
+                <li class="li">
+                    <details>
+                        <summary>Pages</summary>
+                        <div class="Markets">
+                            <ol>
+                                <li><a href="/pages/html-css-js-compiler/">html-css-js-compiler</a></li>
+                                <li><a href="/pages/img-converter/">img-converter</a></li>
+                                <li><a href="/pages/sections-library/">sections-library</a></li>
 
-                    <li class="mobile-dropdown">
-                        <button class="mobile-dropdown-btn" onclick="toggleMobileDropdown(this)">
-                            <span>
-                                <svg viewBox="0 0 24 24" width="20" height="20">
-                                    <path fill="#3b82f6"
-                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                </svg>
-                                Profile
-                            </span>
-                            <svg class="mobile-dropdown-arrow" viewBox="0 0 24 24" width="16" height="16">
-                                <path fill="currentColor" d="M7 10l5 5 5-5z" />
-                            </svg>
-                        </button>
-                        <ul class="mobile-dropdown-menu">
-                            <li><a href="/Profile/abcd/" onclick="toggleMobileMenu()">
-                                    <svg viewBox="0 0 24 24" width="14" height="14">
-                                        <path fill="#3b82f6"
-                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                    </svg>
-                                    Profile Design
-                                </a></li>
-                            <li><a href="/Profile/Anand/" onclick="toggleMobileMenu()">
-                                    <svg viewBox="0 0 24 24" width="14" height="14">
-                                        <path fill="#3b82f6"
-                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                    </svg>
-                                    Anand Parjapati
-                                </a></li>
-                            <li><a href="/Profile/Yashika/" onclick="toggleMobileMenu()">
-                                    <svg viewBox="0 0 24 24" width="14" height="14">
-                                        <path fill="#3b82f6"
-                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                    </svg>
-                                    Yashika Srivastava
-                                </a></li>
-                            <li><a href="/Profile/Suhana/" onclick="toggleMobileMenu()">
-                                    <svg viewBox="0 0 24 24" width="14" height="14">
-                                        <path fill="#3b82f6"
-                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                    </svg>
-                                    Suhana Chahat Ali
-                                </a></li>
-                        </ul>
-                    </li>
+                            </ol>
+                        </div>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>Profile</summary>
+                        <div>
+                            <ol>
+                                <li><a href="/Profile/abcd/" target="_blank">Profile design</a></li>
+                                <li><a href="/Profile/Yashika/" target="_blank">Yashika Srivastava</a></li>
+                                <li><a href="/Profile/Suhana/" target="_blank">Suhana Chahat Ali</a></li>
+                            </ol>
+                        </div>
+                    </details>
+                </li>
+                <li class="li"><a href="#Our Team">Our Team</a></li>
+            </ul>
+        </div>
 
-                    <li><a href="#about" onclick="toggleMobileMenu()" class="mobile-nav-link">
-                            <svg viewBox="0 0 24 24" width="20" height="20">
-                                <path fill="#3b82f6"
-                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-                            </svg>
-                            About
-                        </a></li>
-
-                    <li><a href="#how-we-work" onclick="toggleMobileMenu()" class="mobile-nav-link">
-                            <svg viewBox="0 0 24 24" width="20" height="20">
-                                <path fill="#3b82f6"
-                                    d="M19 4h-4.18C14.4 2.84 13.3 2 12 2c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V8h10v2z" />
-                            </svg>
-                            How We Work
-                        </a></li>
-
-                    <li><a href="#projects" onclick="toggleMobileMenu()" class="mobile-nav-link">
-                            <svg viewBox="0 0 24 24" width="20" height="20">
-                                <path fill="#3b82f6" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z" />
-                            </svg>
-                            Projects
-                        </a></li>
-
-                    <li><a href="#team" onclick="toggleMobileMenu()" class="mobile-nav-link">
-                            <svg viewBox="0 0 24 24" width="20" height="20">
-                                <path fill="#3b82f6"
-                                    d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
-                            </svg>
-                            Team
-                        </a></li>
-
-                    <li><a href="#contact" onclick="toggleMobileMenu()" class="mobile-nav-link">
-                            <svg viewBox="0 0 24 24" width="20" height="20">
-                                <path fill="#3b82f6"
-                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
-                            </svg>
-                            Contact
-                        </a></li>
-                </ul>
-
-                <div class="mobile-nav-footer">
-                    <a href="/pages/join-haproven.html" class="mobile-cta-btn">
-                        Join Haproven Community
-                    </a>
-                    <p class="mobile-contact-info">
-                        <svg viewBox="0 0 24 24" width="16" height="16">
-                            <path fill="#94a3b8"
-                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
-                        </svg>
-                        contact@haproven.com
-                    </p>
-                </div>
-            </div>
-        </nav>
     </header>
 
+
+    <!-- ======
+     hero section
+     ========-->
+    <article class="hero">
+        <canvas id="canvas1"></canvas>
+        <div class="content">
+            <h1>Hapro<span>ven</span></h1>
+
+            <div class="tagline">
+                Hackathon • Projects • Events • Technology
+            </div>
+
+            <div class="description">
+                <p>
+                    <span>Haproven</span> is a tech-focused community and creative team.
+                    We turn ideas into <span>real-world solutions</span> by working together
+                    and using modern technology.
+                </p>
+                <p>
+                    Join us to build useful projects, learn together, create helpful tools,
+                    and inspire the next generation of digital innovation.
+                </p>
+            </div>
+
+            <div class="buttons">
+                <a href="/Page/records.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Explore Now ❌
+                </a>
+                <a href="Page/Join Haproven.html" class="btn btn-secondary">
+                    <i class="fas fa-users"></i>
+                    Join Community
+                </a>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">0+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">0+</span>
+                    <span class="stat-label">Hackathons</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">0+</span>
+                    <span class="stat-label">Members</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/6</span>
+                    <span class="stat-label">Support</span>
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+
+    <!-- ===
+     main 
+     === -->
     <main>
+
         <section class="haproven-about" id="about">
             <div class="about-t">
                 <div class="about-l">
@@ -795,181 +731,11 @@
 
 
 
+
     </main>
 
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-<script>
-    // Mobile Menu Toggle
-    function toggleMobileMenu() {
-        const mobileNav = document.querySelector('.mobile-nav');
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-        const body = document.body;
-
-        mobileNav.classList.toggle('active');
-        menuBtn.classList.toggle('active');
-        body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-
-        // Update ARIA attributes
-        const isExpanded = mobileNav.classList.contains('active');
-        menuBtn.setAttribute('aria-expanded', isExpanded);
-        mobileNav.setAttribute('aria-hidden', !isExpanded);
-    }
-
-    // Mobile Dropdown Toggle
-    function toggleMobileDropdown(button) {
-        const dropdown = button.closest('.mobile-dropdown');
-        dropdown.classList.toggle('active');
-    }
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        const mobileNav = document.querySelector('.mobile-nav');
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-
-        if (mobileNav.classList.contains('active') &&
-            !mobileNav.contains(e.target) &&
-            !menuBtn.contains(e.target)) {
-            toggleMobileMenu();
-        }
-    });
-
-    // Close mobile menu with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            const mobileNav = document.querySelector('.mobile-nav');
-            if (mobileNav.classList.contains('active')) {
-                toggleMobileMenu();
-            }
-        }
-    });
-
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('.header');
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        // Add smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        // Close mobile menu if open
-                        const mobileNav = document.querySelector('.mobile-nav');
-                        if (mobileNav.classList.contains('active')) {
-                            toggleMobileMenu();
-                        }
-
-                        // Smooth scroll to target
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
-    });
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ======
-     hero section
-     ========-->
-<!-- <article class="hero">
-    <canvas id="canvas1"></canvas>
-    <div class="content">
-        <h1>Hapro<span>ven</span></h1>
-
-        <div class="tagline">
-            Hackathon • Projects • Events • Technology
-        </div>
-
-        <div class="description">
-            <p>
-                <span>Haproven</span> is a tech-focused community and creative team.
-                We turn ideas into <span>real-world solutions</span> by working together
-                and using modern technology.
-            </p>
-            <p>
-                Join us to build useful projects, learn together, create helpful tools,
-                and inspire the next generation of digital innovation.
-            </p>
-        </div>
-
-        <div class="buttons">
-            <a href="/Page/records.html" class="btn btn-primary">
-                <i class="fas fa-rocket"></i>
-                Explore Now ❌
-            </a>
-            <a href="Page/Join Haproven.html" class="btn btn-secondary">
-                <i class="fas fa-users"></i>
-                Join Community
-            </a>
-        </div>
-
-        <div class="stats">
-            <div class="stat">
-                <span class="stat-number">0+</span>
-                <span class="stat-label">Projects</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">0+</span>
-                <span class="stat-label">Hackathons</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">0+</span>
-                <span class="stat-label">Members</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">24/6</span>
-                <span class="stat-label">Support</span>
-            </div>
-        </div>
-    </div>
-</article> -->
-
-
-
-
-<!-- join tha cominity -->
-<!-- <section class="Join-the-Communit">
+    <!-- join tha cominity -->
+    <section class="Join-the-Communit">
         <div class="Join-the-box">
             <h2>
                 Join the Communit
@@ -979,27 +745,27 @@
             </p>
             <a target="_blank" href="Page/Join Haproven.html" class="btns">Join Haproven Now</a>
         </div>
-    </section> -->
+    </section>
 
 
 
 
-<footer>
-    <div class="footer">
-        <b> © 2025 Haproven — All Rights Reserved.</b>
-        <b><a href="">meet teams</a></b>
-    </div>
-    <div>
-        <ul>
-            <li><a target="_blank" href="https://github.com/susheelcoder/haproven">GitHub</a></li>
-            <li><a target="_blank" href="https://www.instagram.com/haproven/">instagram</a></li>
-            <li><a target="_blank" href="https://www.youtube.com/@Haproven">Youtabe</a></li>
-            <li><a target="_blank" href="https://linktr.ee/haproven">linktr.ee</a></li>
-        </ul>
-    </div>
-</footer>
-<script src="JS/had-foot.js"></script>
-<script src="JS/hero.js"></script>
+    <footer>
+        <div class="footer">
+            <b> © 2025 Haproven — All Rights Reserved.</b>
+            <b><a href="">meet teams</a></b>
+        </div>
+        <div>
+            <ul>
+                <li><a target="_blank" href="https://github.com/susheelcoder/haproven">GitHub</a></li>
+                <li><a target="_blank" href="https://www.instagram.com/haproven/">instagram</a></li>
+                <li><a target="_blank" href="https://www.youtube.com/@Haproven">Youtabe</a></li>
+                <li><a target="_blank" href="https://linktr.ee/haproven">linktr.ee</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="JS/had-foot.js"></script>
+    <script src="JS/hero.js"></script>
 
 
 
@@ -1007,6 +773,9 @@
 
 
 
+</body>
+
+</html>
 
 <script>
     function openBox() {
