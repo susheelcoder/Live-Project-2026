@@ -1597,7 +1597,6 @@ article {
     .section-header {
         text-align: center;
         max-width: 1000px;
-        margin: 230px 18px 70px 0px;
     }
 
 }
@@ -1684,8 +1683,8 @@ article {
 
 
 /* =====
-             HOW AT WORK SECTION
-              ===== */
+ HOW AT WORK SECTION
+ ===== */
 .How-at-work {
     display: flex;
     gap: 50px;
