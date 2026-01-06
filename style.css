@@ -987,7 +987,7 @@ article::before {
 }
 
 /* Stats Section */
-.stats {
+.hd-box {
     max-width: 1200px;
     margin: 60px auto 0;
     padding: 0 20px;
@@ -1098,23 +1098,6 @@ article::before {
 }
 
 @media (max-width: 768px) {
-    /* --------------------- */
-
-    .hero-button button {
-        padding: 8px 17px;
-    }
-
-    .hero-button {
-        gap: 10px;
-    }
-
-    .stats {
-        display: flex;
-        flex-wrap: nowrap;
-    }
-
-    /* ------------------- */
-
     article {
         max-height: 100vh;
     }
@@ -1127,7 +1110,7 @@ article::before {
         justify-content: center;
     }
 
-    .stats {
+    .hd-box {
         gap: 20px;
     }
 
@@ -1162,7 +1145,7 @@ article::before {
         height: 120px;
     }
 
-    .stats {
+    .hd-box {
         flex-direction: column;
         align-items: center;
     }
